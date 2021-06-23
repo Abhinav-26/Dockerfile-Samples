@@ -1,0 +1,20 @@
+#Base Image
+FROM python:3.8
+
+#Creating a dir in Container
+RUN mkdir /app
+
+#Moving into the directory created
+WORKDIR /app
+
+#Adding the complete project in dir created
+ADD . /app/
+
+#Installing dependencies
+RUN pip3 install -r requirements.txt
+
+#Exposing port
+EXPOSE 8888
+
+#Command Executing
+CMD [ "flask", "run", "--host=0.0.0.0", "--port=8000"]
