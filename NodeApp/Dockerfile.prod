@@ -28,9 +28,8 @@ COPY nginx.default /etc/nginx/sites-available/default
 
 # Installing dependencies
 RUN npm install --production
-
-# Making start.sh executable
-RUN chmod +x ./start.sh
+RUN npm i -g pm2
 
 # Starting Server
-CMD [ "./start.sh"]
+CMD ["sh", "-c", "service nginx start ; pm2-runtime src/index.js -i 0"]
+
