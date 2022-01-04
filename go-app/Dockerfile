@@ -5,6 +5,12 @@ FROM golang:1.16 as builder
 # Setup the working directory
 WORKDIR /app
 
+# COPY go module (uncomment if you have go.mod go.sum files)
+# COPY go.mod go.sum /app/
+
+# Download go modules and cache for next time build
+# RUN go mod download
+
 # Add source code
 ADD . /app/
 
